@@ -7,14 +7,14 @@ import {
 	Post,
 	UsePipes,
 	ValidationPipe,
-} from '@nestjs/common'
+} from '@nestjs/common';
 
-import { Types } from 'mongoose'
-import { Auth } from 'src/auth/decorators/Auth.decorator'
-import { IdValidationPipe } from 'src/pipes/id.validation.pipe'
-import { User } from 'src/user/decorators/user.decorator'
-import { SetRatingDto } from './dto/set-rating.dto'
-import { RatingService } from './rating.service'
+import { Types } from 'mongoose';
+import { Auth } from 'src/auth/decorators/auth.decorator';
+import { IdValidationPipe } from 'src/pipes/id.validation.pipe';
+import { User } from 'src/user/decorators/user.decorator';
+import { SetRatingDto } from './dto/set-rating.dto';
+import { RatingService } from './rating.service';
 
 @Controller('ratings')
 export class RatingController {
@@ -29,7 +29,7 @@ export class RatingController {
 		@Body()
 		dto: SetRatingDto
 	) {
-		return this.ratingService.setRating(userId, dto)
+		return this.ratingService.setRating(userId, dto);
 	}
 
 	@Get('/:movieId')
@@ -38,6 +38,6 @@ export class RatingController {
 		@Param('movieId', IdValidationPipe) movieId: Types.ObjectId,
 		@User('_id') userId: Types.ObjectId
 	) {
-		return this.ratingService.getMovieValueByUser(movieId, userId)
+		return this.ratingService.getMovieValueByUser(movieId, userId);
 	}
 }
